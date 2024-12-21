@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml">
+    <!-- Top Section: Title -->
+    <top>
+        <Label text="Data Management Tool" style="-fx-font-size: 20px; -fx-font-weight: bold;" alignment="CENTER" />
+        <Button text="Import data from a file" />
+    </top>
+    <!-- Center Section: Data Table -->
+    <ToggleButton text="text processing tool"  fx:id="toggleButton" />
+    <center>
+        <VBox spacing="10" alignment="CENTER" >
+            <TableView fx:id="dataTable" prefHeight="300" prefWidth="500" >
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" />
+                    <TableColumn fx:id="nameColumn" text="Name" />
+                    <TableColumn fx:id="valueColumn" text="Value" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <!-- Bottom Section: Controls -->
+    <bottom>
+        <VBox spacing="10" alignment="CENTER" >
+            <GridPane hgap="8" vgap="8" alignment="CENTER">
+                <Label text="ID:" />
+                <TextField fx:id="itemIdField" GridPane.columnIndex="1" />
+
+                <Label text="Name:" GridPane.rowIndex="1" />
+                <TextField fx:id="itemNameField" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+                <Label text="Value:" GridPane.rowIndex="2" />
+                <TextField fx:id="itemValueField" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+            </GridPane>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Add" fx:id="addItemButton"  />
+                <Button text="Update" fx:id="updateItemButton"  />
+                <Button text="Delete" fx:id="deleteItemButton"  />
+                <Button text="Filter"  />
+                <Button text="Sort"  />
+                <Button text="Clear"  styleClass="amber-button"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>
