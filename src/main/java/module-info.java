@@ -10,7 +10,12 @@ module team1.testprocessing {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires annotations;
+    requires java.logging;
+    requires java.desktop;
 
     opens team1.testprocessing to javafx.fxml;
     exports team1.testprocessing;
+    opens team1.testprocessing.controllers to javafx.fxml;
+    exports team1.testprocessing.controllers;
 }
