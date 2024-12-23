@@ -12,7 +12,10 @@
 
 <?import javafx.scene.text.TextFlow?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="team1.testprocessing.controllers.MainController">
+            fx:controller="team1.testprocessing.controllers.MainController"
+stylesheets="@Styles/main.css"
+>
+
     <!-- Root container -->
     <VBox spacing="20" alignment="CENTER" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
 

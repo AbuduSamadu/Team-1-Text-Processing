@@ -1,4 +1,5 @@
 package team1.testprocessing.service;
+
 import team1.testprocessing.Models.DataModel;
 import team1.testprocessing.utils.AlertUtility;
 
@@ -7,26 +8,25 @@ import java.util.List;
 import java.util.Optional;
 
 public class DataStorageService {
-
-    private   DataStorageService dataStorageService;
-    private  List<DataModel> dataItems;
-
-    public  Object instance;
+    private  static  DataStorageService singleInstance= null;
+    private DataStorageService dataStorageService;
+    private List<DataModel> dataItems;
 
     private DataStorageService() {
-        this.dataItems = new ArrayList<>();
-
-
+      this.dataItems=new ArrayList<>();
     }
 
-    public  DataStorageService getInstance(){
-        return dataStorageService= (dataStorageService==null)? new DataStorageService():dataStorageService;
 
+    public  static  synchronized  DataStorageService getInstance(){
+
+        if (singleInstance==null){
+            singleInstance= new DataStorageService();
+        }
+        return singleInstance;
     }
-
 
     public void addNewItem(DataModel model) {
-        Optional<DataModel> optionalItem = findById(String.valueOf(model.id()));
+        Optional<DataModel> optionalItem = findById(model.getId());
 
         optionalItem.ifPresentOrElse(id -> {
                     AlertUtility.showErrorAlert("failed to add data ",
@@ -36,37 +36,38 @@ public class DataStorageService {
                 () -> dataItems.add(model));
     }
 
-    public  void updateItem(DataModel model){
+    public void updateItem(DataModel model) {
 
-         Optional<DataModel> existingItem=findById(String.valueOf(model));
-        existingItem.ifPresentOrElse(item->{
-            item.name().set(model.name().toString());
-            item.name().set(model.value().toString());
-        }, ()->{
+        Optional<DataModel> existingItem = findById(model.getId());
+        existingItem.ifPresentOrElse(item -> {
+            item.setName(model.getName());
+            item.setName(model.getName());
+        }, () -> {
             AlertUtility.showErrorAlert("failed to update data",
                     "item not found",
-                    "enter a valid item " );
+                    "enter a valid item ");
         });
     }
 
-    public void deleteItem( DataModel model){
+    public void deleteItem(DataModel model) {
 
-        Optional<DataModel> optionalItem = findById(String.valueOf(model.id()));
+        Optional<DataModel> optionalItem = findById(model.getId());
 
-        optionalItem.ifPresentOrElse(id -> {
+        optionalItem.ifPresentOrElse( item-> dataItems.remove(item),
+                ()-> {
                     AlertUtility.showErrorAlert("failed to add data ",
-                            "item with id" + id + " not found",
-                            " provide a valid item");
-                },
-                () -> dataItems.remove(model));
+                            "item with  not found",
+                            " provide a valid item Id");
+                }
+                );
     }
 
-    public  List<DataModel> getDataItems(){
-         return  new ArrayList<>(dataItems);
+    public List<DataModel> getDataItems() {
+        return new ArrayList<>(dataItems);
     }
 
 
     public Optional<DataModel> findById(String Id) {
-        return dataItems.stream().filter(data -> data.id().toString().equals(Id)).findFirst();
+        return dataItems.stream().filter(data -> data.getId().equals(Id)).findFirst();
     }
 }
