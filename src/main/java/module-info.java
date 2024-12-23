@@ -12,6 +12,7 @@ module team1.testprocessing {
     requires com.almasb.fxgl.all;
     requires annotations;
     requires java.logging;
+    requires java.desktop;
 
     opens team1.testprocessing to javafx.fxml;
     exports team1.testprocessing;

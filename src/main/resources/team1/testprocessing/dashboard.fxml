@@ -2,17 +2,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="team1.testprocessing.controllers.DataStorageController"
+            stylesheets="@Styles/dashboard.css"
+>
     <!-- Top Section: Title -->
     <top>
         <Label text="Data Management Tool" style="-fx-font-size: 20px; -fx-font-weight: bold;" alignment="CENTER" />
-        <Button text="Import data from a file" />
+        <Button text="Import" onAction="#handleAddItemByFileImport"/>
     </top>
     <!-- Center Section: Data Table -->
-    <ToggleButton text="text processing tool"  fx:id="toggleButton" />
+    <ToggleButton text="text processing tool" onAction="#handleToggle" fx:id="toggleButton" />
     <center>
         <VBox spacing="10" alignment="CENTER" >
-            <TableView fx:id="dataTable" prefHeight="300" prefWidth="500" >
+            <TableView fx:id="dataTable" prefHeight="300" prefWidth="500" onMouseClicked="#handleRowSelection">
                 <columns>
                     <TableColumn fx:id="idColumn" text="ID" />
                     <TableColumn fx:id="nameColumn" text="Name" />
@@ -37,12 +40,12 @@
             </GridPane>
 
             <HBox spacing="10" alignment="CENTER">
-                <Button text="Add" fx:id="addItemButton"  />
-                <Button text="Update" fx:id="updateItemButton"  />
-                <Button text="Delete" fx:id="deleteItemButton"  />
-                <Button text="Filter"  />
-                <Button text="Sort"  />
-                <Button text="Clear"  styleClass="amber-button"/>
+                <Button text="Add" fx:id="addItemButton" onAction="#handleItemAdd" />
+                <Button text="Update" fx:id="updateItemButton" onAction="#handleItemUpdate" />
+                <Button text="Delete" fx:id="deleteItemButton" onAction="#handleDeleteItem" />
+                <Button text="Filter" onAction="#handleFilterByKeyword" />
+                <Button text="Sort" onAction="#handleSortByName" />
+                <Button text="Clear" onAction="#clearFields" styleClass="amber-button"/>
             </HBox>
         </VBox>
     </bottom>
