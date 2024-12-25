@@ -25,7 +25,7 @@
 
 /* Button styles */
 .button {
-    -fx-background-color: #0078d7;
+    -fx-background-color:  #45a049;
     -fx-text-fill: white;
     -fx-padding: 10px 20px;
     -fx-font-size: 14px;
@@ -34,7 +34,7 @@
 }
 
 .button:hover {
-    -fx-background-color: #005a9e;
+    -fx-background-color:  #45a049;
 }
 
 
@@ -45,7 +45,7 @@
 
 /* ToggleButton styles */
 .toggle-button {
-    -fx-background-color: #0078d7;
+    -fx-background-color:  #45a049;
     -fx-text-fill: white;
     -fx-padding: 10px 20px;
     -fx-font-size: 12px;
@@ -54,7 +54,7 @@
 }
 
 .toggle-button:selected {
-    -fx-background-color: #005a9e;
+    -fx-background-color:  #45a049;
 }
 
 /* TableView styles */

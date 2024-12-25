@@ -30,7 +30,6 @@ public class DataStorageController {
     private final ObservableList<DataModel> dataList = FXCollections.observableArrayList();
 
 
-    private ToggleButton toggleButton;
 
     private Label titleLabel;
     @FXML
@@ -187,7 +186,6 @@ public class DataStorageController {
                     "try again");
         }
 
-
     }
 
 
@@ -213,21 +211,4 @@ public class DataStorageController {
     }
 
 
-    @FXML
-    public void handleToggle() {
-        if (toggleButton.isSelected()) {
-            try {
-                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/src/main/resources/team1/testprocessing/hello-view.fxml")));
-                Stage stage = (Stage) toggleButton.getScene().getWindow();
-                stage.setScene(new Scene(root, 800, 600));
-                stage.setTitle("Data Management Dashboard");
-            } catch (IOException e) {
-                LoggerUtility.logError(e);
-            }
-        } else {
-            titleLabel.setText("Data Management Dashboard");
-            toggleButton.setText("Switch to Text Processing Tool");
-        }
-
-    }
 }
