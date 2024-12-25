@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="team1.testprocessing.controllers.MainController">
+    <TabPane>
+        <Tab text="Text Processing Tool">
+            <AnchorPane>
+                <fx:include source="hello-view.fxml"/>
+            </AnchorPane>
+        </Tab>
+        <Tab text="Data Management Tool">
+            <AnchorPane>
+                <fx:include source="dashboard.fxml"/>
+            </AnchorPane>
+        </Tab>
+    </TabPane>
+</AnchorPane>

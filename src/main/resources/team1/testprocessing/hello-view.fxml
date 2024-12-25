@@ -1,16 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="team1.testprocessing.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<?import javafx.scene.text.TextFlow?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="team1.testprocessing.controllers.MainController"
+stylesheets="@Styles/main.css"
+>
+
+    <!-- Root container -->
+    <VBox spacing="20" alignment="CENTER" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+
+
+        <!-- Title -->
+        <Label fx:id="titleLabel" text="Text Processing Tool" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+        <!-- Text Input Area with Import Button -->
+        <VBox spacing="10">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Button text="Import data from a file" onAction="#handleImport" />
+            </HBox>
+            <TextArea fx:id="textAreaInput"  promptText="Enter your text here..." wrapText="true" prefHeight="150" />
+        </VBox>
+
+        <!-- Regex Pattern Input -->
+        <VBox spacing="10">
+            <Label text="Regex Pattern:" />
+            <TextField fx:id="regexPatternField" promptText="Enter regex pattern..." prefWidth="300" prefHeight="50"/>
+            <Label text="Regex Replacer:" />
+            <TextField fx:id="regexReplacerField" promptText="Enter regex replacer..." prefWidth="300" prefHeight="50" />
+        </VBox>
+
+        <!-- Buttons for actions -->
+        <HBox spacing="10">
+            <Button text="Search" onAction="#handleSearch"  />
+            <Button text="Replace" onAction="#handleReplace" />
+            <Button text="Exact Match" onAction="#handleExactMatch" />
+            <Button text="Other regex patterns" onAction="#handleOtherRegexPatterns" />
+            <Button text="Clear" onAction="#handleClear" styleClass="amber-button"/>
+        </HBox>
+
+        <!-- Result area -->
+        <TextArea fx:id="textAreaOutput" promptText="Results will be shown here..." wrapText="true" prefHeight="150" editable="false" />
+    </VBox>
+</AnchorPane>
