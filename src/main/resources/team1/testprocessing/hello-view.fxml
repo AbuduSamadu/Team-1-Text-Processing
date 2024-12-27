@@ -19,8 +19,6 @@ stylesheets="@Styles/main.css"
     <!-- Root container -->
     <VBox spacing="20" alignment="CENTER" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
 
-        <!-- Toggle Button -->
-        <ToggleButton text="Switch to Data Management Tool"  onAction="#handleToggle" fx:id="toggleButton" />
 
         <!-- Title -->
         <Label fx:id="titleLabel" text="Text Processing Tool" style="-fx-font-size: 24px; -fx-font-weight: bold;" />

@@ -89,23 +89,6 @@ public class MainController {
     }
 
     @FXML
-    private void handleToggle() {
-        if (toggleButton.isSelected()) {
-            try {
-                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/team1/testprocessing/dashboard.fxml")));
-                Stage stage = (Stage) toggleButton.getScene().getWindow();
-                stage.setScene(new Scene(root, 800, 600));
-                stage.setTitle("Data Management Dashboard");
-            } catch (IOException e) {
-                LoggerUtility.logError(e);
-            }
-        } else {
-            titleLabel.setText("Text Processing Tool");
-            toggleButton.setText("Switch to Data Management Tool");
-        }
-    }
-
-    @FXML
     public void handleImport(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Text File");
