@@ -59,7 +59,7 @@ public class DataStorageController {
     @FXML
     private TableColumn<DataModel, String> valueColumn;
     private final FileImportService fileImportService= new FileImportService();
-
+    private  final  ObservableList<DataModel> observableList= FXCollections.observableArrayList();
     @FXML
     public void initialize() {
         idColumn.setCellValueFactory(data -> data.getValue().idProperty());
@@ -176,10 +176,13 @@ public class DataStorageController {
     public void handleAddItemByFileImport() {
         try {
             var dataItems = fileImportService.extractItemsFromFile(addItemButton);
-            dataItems.forEach(e -> DataStorageService.getInstance().addNewItem(e));
+            dataItems.forEach((data)->DataStorageService.getInstance().addNewItem(data));
+            System.out.println(dataItems);
             AlertUtility.showInfoAlert("accepted",
                     "operation successful",
                     "items successfully added from file");
+                     loadData();
+
         } catch (Exception e) {
             AlertUtility.showErrorAlert("File Error",
                     "error occurred  while reading the file",

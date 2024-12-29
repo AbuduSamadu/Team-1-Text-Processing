@@ -1,9 +1,11 @@
 package team1.testprocessing.service;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import team1.testprocessing.Models.DataModel;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +22,14 @@ class DataStorageServiceTest {
         dataStorageService = DataStorageService.getInstance();
         dataModel1 = new DataModel("1", "Item 1", "value");
         dataModel2 = new DataModel("2", "Item 2", "value");
+    }
+
+    @BeforeEach
+    public  void  resetSingleton() throws NoSuchFieldException, IllegalAccessException {
+        Field instance= DataStorageService.class.getDeclaredField("singleInstance");
+        instance.setAccessible(true);
+        instance.set(null,null);
+
     }
 
     @Test
