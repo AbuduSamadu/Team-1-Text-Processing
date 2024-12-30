@@ -12,12 +12,12 @@ public class DataStorageService {
     private DataStorageService dataStorageService;
     private List<DataModel> dataItems;
 
-    private DataStorageService() {
+    private  DataStorageService() {
       this.dataItems=new ArrayList<>();
     }
 
 
-    public  static  synchronized  DataStorageService getInstance(){
+    public static synchronized  DataStorageService getInstance(){
 
         if (singleInstance==null){
             singleInstance= new DataStorageService();
