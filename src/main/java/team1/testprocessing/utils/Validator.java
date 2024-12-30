@@ -20,14 +20,16 @@ public class Validator {
         }
     }
 
-    public void validateInputs(String text, String regex) {
+    public boolean validateInputs(String text, String regex) {
         if (text == null || text.isEmpty()) {
             AlertUtility.showErrorAlert("Validation Error", "Invalid Input Text", "Input text cannot be null or empty.");
-            return;
+            return false;
         }
         if (regex == null || regex.isEmpty()) {
             AlertUtility.showErrorAlert("Validation Error", "Invalid Regex Pattern", "Regex pattern cannot be null or empty.");
+            return false;
         }
+        return true;
     }
 
 }
