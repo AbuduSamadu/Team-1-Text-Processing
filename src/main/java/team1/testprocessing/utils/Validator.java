@@ -5,6 +5,7 @@ import java.util.regex.PatternSyntaxException;
 
 public class Validator {
     public Validator() {
+        //  No Args Constructor
     }
 
     public static boolean isValidRegex(String regex) {

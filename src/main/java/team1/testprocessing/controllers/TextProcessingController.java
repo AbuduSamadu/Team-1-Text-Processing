@@ -6,10 +6,10 @@ import team1.testprocessing.service.TextProcessor;
 import team1.testprocessing.utils.Validator;
 
 public class TextProcessingController {
-    private final TextProcessor textProcessor ;
+    private final TextProcessor textProcessor;
     private final RegexProcessor regexProcessor;
 
-    public TextProcessingController(){
+    public TextProcessingController() {
         Validator validator = new Validator();
         RegexService regexService = new RegexService(new RegexProcessor(validator));
         this.textProcessor = new TextProcessor(regexService);

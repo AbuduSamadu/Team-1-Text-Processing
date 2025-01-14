@@ -4,6 +4,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
 public class AlertUtility {
+    private  AlertUtility(){
+
+    }
 
     public static void showInfoAlert(String title, String header, String message) {
         showAlert(Alert.AlertType.INFORMATION, title, header, message);

@@ -7,6 +7,8 @@ import java.util.logging.Logger;
 public class LoggerUtility {
     private static final Logger logger = Logger.getLogger(LoggerUtility.class.getName());
 
+    private LoggerUtility(){}
+
     static {
         ConsoleHandler consoleHandler = new ConsoleHandler();
         consoleHandler.setLevel(Level.ALL);

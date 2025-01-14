@@ -2,14 +2,9 @@ package team1.testprocessing.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import team1.testprocessing.Exceptions.FailedToAddItemException;
 import team1.testprocessing.Exceptions.FailedToDeleteException;
 import team1.testprocessing.Exceptions.FailedToUpdateItemException;
@@ -18,11 +13,8 @@ import team1.testprocessing.service.DataStorageService;
 import team1.testprocessing.service.FileImportService;
 import team1.testprocessing.utils.AlertUtility;
 import team1.testprocessing.utils.CollectionsFormatter;
-import team1.testprocessing.utils.LoggerUtility;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 public class DataStorageController {
 
@@ -60,6 +52,15 @@ public class DataStorageController {
     private TableColumn<DataModel, String> valueColumn;
     private final FileImportService fileImportService= new FileImportService();
     private  final  ObservableList<DataModel> observableList= FXCollections.observableArrayList();
+
+    public DataStorageController(){
+
+    }
+
+    public DataStorageController(Label titleLabel) {
+        this.titleLabel = titleLabel;
+    }
+
     @FXML
     public void initialize() {
         idColumn.setCellValueFactory(data -> data.getValue().idProperty());
@@ -92,7 +93,6 @@ public class DataStorageController {
             DataStorageService.getInstance().addNewItem(newItem);
             clearFields();
             dataList.add(newItem);
-            System.out.println(newItem);
             AlertUtility.showInfoAlert("accepted",
                     "operation successful",
                     "item added");
@@ -176,8 +176,7 @@ public class DataStorageController {
     public void handleAddItemByFileImport() {
         try {
             var dataItems = fileImportService.extractItemsFromFile(addItemButton);
-            dataItems.forEach((data)->DataStorageService.getInstance().addNewItem(data));
-            System.out.println(dataItems);
+            dataItems.forEach(data->DataStorageService.getInstance().addNewItem(data));
             AlertUtility.showInfoAlert("accepted",
                     "operation successful",
                     "items successfully added from file");

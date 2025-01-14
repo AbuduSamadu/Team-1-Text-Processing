@@ -8,19 +8,19 @@ import java.util.List;
 import java.util.Optional;
 
 public class DataStorageService {
-    private  static  DataStorageService singleInstance= null;
+    private static DataStorageService singleInstance = null;
     private DataStorageService dataStorageService;
     private List<DataModel> dataItems;
 
-    private  DataStorageService() {
-      this.dataItems=new ArrayList<>();
+    private DataStorageService() {
+        this.dataItems = new ArrayList<>();
     }
 
 
-    public static synchronized  DataStorageService getInstance(){
+    public static synchronized DataStorageService getInstance() {
 
-        if (singleInstance==null){
-            singleInstance= new DataStorageService();
+        if (singleInstance == null) {
+            singleInstance = new DataStorageService();
         }
         return singleInstance;
     }
@@ -53,13 +53,13 @@ public class DataStorageService {
 
         Optional<DataModel> optionalItem = findById(model.getId());
 
-        optionalItem.ifPresentOrElse( item-> dataItems.remove(item),
-                ()-> {
-                    AlertUtility.showErrorAlert("failed to add data ",
-                            "item with  not found",
-                            " provide a valid item Id");
-                }
-                );
+        optionalItem.ifPresentOrElse(item -> dataItems.remove(item),
+                () ->
+                        AlertUtility.showErrorAlert("failed to add data ",
+                                "item with  not found",
+                                " provide a valid item Id")
+
+        );
     }
 
     public List<DataModel> getDataItems() {
@@ -67,7 +67,7 @@ public class DataStorageService {
     }
 
 
-    public Optional<DataModel> findById(String Id) {
-        return dataItems.stream().filter(data -> data.getId().equals(Id)).findFirst();
+    public Optional<DataModel> findById(String id) {
+        return dataItems.stream().filter(data -> data.getId().equals(id)).findFirst();
     }
 }
