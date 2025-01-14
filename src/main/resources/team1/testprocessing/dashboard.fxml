@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="team1.testprocessing.controllers.DataStorageController"
+            stylesheets="@Styles/dashboard.css">
+
+    <!-- Root container -->
+    <VBox spacing="20" alignment="CENTER" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+
+        <!-- Title -->
+        <Label text="Data Management Tool" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+        <!-- Import Button -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Button text="Import" onAction="#handleAddItemByFileImport"/>
+        </HBox>
+
+        <!-- Data Table -->
+        <TableView fx:id="dataTable" prefHeight="300" prefWidth="500" onMouseClicked="#handleRowSelection">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" />
+                <TableColumn fx:id="nameColumn" text="Name" />
+                <TableColumn fx:id="valueColumn" text="Value" />
+            </columns>
+        </TableView>
+
+        <!-- Form Fields -->
+        <VBox spacing="10">
+            <HBox spacing="10">
+                <Label text="ID:" />
+                <TextField fx:id="itemIdField" />
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Name:" />
+                <TextField fx:id="itemNameField" />
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Value:" />
+                <TextField fx:id="itemValueField" />
+            </HBox>
+        </VBox>
+
+        <!-- Buttons for actions -->
+        <HBox spacing="10">
+            <Button text="Add" fx:id="addItemButton" onAction="#handleItemAdd" />
+            <Button text="Update" fx:id="updateItemButton" onAction="#handleItemUpdate" />
+            <Button text="Delete" fx:id="deleteItemButton" onAction="#handleDeleteItem" />
+            <Button text="Filter" onAction="#handleFilterByKeyword" />
+            <Button text="Sort" onAction="#handleSortByName" />
+            <Button text="Clear" onAction="#clearFields" styleClass="amber-button"/>
+        </HBox>
+    </VBox>
+</AnchorPane>
