@@ -3,7 +3,6 @@ package team1.testprocessing.Models;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-
 public class DataModel {
 
    private final  StringProperty id;
