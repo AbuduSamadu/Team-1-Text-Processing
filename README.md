@@ -1,7 +1,6 @@
 ﻿# Team1 Test Processing
 
 ## Overview
-
 The `Team1 Test Processing` project contains utilities and services for processing and manipulating data using regular expressions and collections. This project includes various classes and services that allow you to filter, sort, and manipulate `DataModel` objects, as well as perform regex-based operations.
 
 ## Features
